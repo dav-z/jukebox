@@ -1,0 +1,56 @@
+html {
+	font-size: 30px;
+	height: 100%;
+	background-image: linear-gradient( 45deg, rgb(0,255,200), rgb(255,200,255) );
+	background-size: cover;
+	color: aqua;
+}
+h1 {
+  text-align: center;
+  margin: auto;
+}
+.container {
+  width: 40%;
+  margin: auto;
+	background-color: rgba(0,0,0,0.2);
+	height: 60vh;
+}
+#pause {
+	display: none;
+}
+#volume {
+  width: 20%;
+  display: inline-block;
+}
+#playlist {
+	width: 70%;
+	margin: 20px auto;
+	margin-bottom: 20px;
+	background-color: rgba(0,0,0,0.2);
+	height: 60%;
+	overflow: scroll;
+	font-size: 20px;
+	/*background-size: cover;*/
+}
+.vol {
+  text-align: center;
+  margin: auto;
+}
+.ppbuttons {
+  text-align: center;
+}
+.fa {
+	cursor: pointer;
+	padding: 10px;
+}
+h3 {
+	text-align: center;
+	margin: auto;
+	font-size: 15px;
+}
+ol {
+	margin-top: 0;
+}
+li {
+	margin-top: 10px;
+}
