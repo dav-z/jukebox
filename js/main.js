@@ -16,7 +16,7 @@ function Player( el ) {
   this.songs = [];
   this.newSongIndex = 0;
 }
-
+// adds songs to the array as well as creates a playlist from all songs added
 Player.prototype.addSong = function( song ){
   if( song instanceof Song ){
     this.songs.push(song);
@@ -26,10 +26,11 @@ Player.prototype.addSong = function( song ){
     if ( !song instanceof Song ) return false;
   }
 };
-
+// button functionality while also toggling the play/pause options
 Player.prototype.play = function(){
   this.el.src = this.songs[this.currentSong].file;
   this.el.play();
+  console.log( this.el.src);
   document.querySelector('h3').innerText = this.songs[this.currentSong].artist + " - " + this.songs[this.currentSong].title;
   document.getElementById('pause').style.display = "inline-block";
   document.getElementById('play').style.display = "none";
@@ -39,10 +40,12 @@ Player.prototype.pause = function(){
   document.getElementById('play').style.display = "inline-block";
   document.getElementById('pause').style.display = "none";
 };
+// not shuffle for a queue, just selects a random song from list
 Player.prototype.random = function(){
   this.currentSong = parseInt(Math.random()*this.songs.length);
   this.el.src = this.songs[this.currentSong].file;
   this.el.play();
+  console.log( this.el.src);
   document.querySelector('h3').innerText = this.songs[this.currentSong].artist + " - " + this.songs[this.currentSong].title;
   document.getElementById('pause').style.display = "inline-block";
   document.getElementById('play').style.display = "none";
@@ -57,6 +60,7 @@ Player.prototype.playNext = function(){
   document.getElementById('play').style.display = "none";
 };
 Player.prototype.playPrevious = function(){
+  // if notation to loop the songs being played to the back of list if at track 1
   if( this.currentSong >= 1 ){
     this.currentSong = (this.currentSong - 1) % this.songs.length;
   }
@@ -70,10 +74,7 @@ Player.prototype.playPrevious = function(){
   document.getElementById('pause').style.display = "inline-block";
   document.getElementById('play').style.display = "none";
 };
-// Player.prototype.selectSong = function(){
-//   this.el.src = path + this.songs[this.newSongIndex].file;
-//   this.el.play();
-// };
+// to continue to the next song after one song has ended
 Player.prototype.end = function(){
   this.currentSong = (this.currentSong + 1) % this.songs.length;
   this.el.src = this.songs[this.currentSong].file;
@@ -119,9 +120,7 @@ document.addEventListener("DOMContentLoaded",function(){
   document.querySelector('audio').addEventListener("ended", function(){
     Jukebox.end();
   });
-  // elSelectSong.addEventListener("click", function(){
-  //   Jukebox.selectSong();
-  // });
+
   var Rugrats = new Song( "Theme", "Rugrats", "audio/Rugrats.mp3");
   var Sjowgren = new Song( "Seventeen", "Sjowgren", "audio/Sjowgren.mp3");
   var TameImpala = new Song( "The Less I Know The Better", "Tame Impala", "audio/TameImpala.mp3");
@@ -147,8 +146,8 @@ document.addEventListener("DOMContentLoaded",function(){
   Jukebox.addSong(PorterRobinson);
   Jukebox.addSong(SanHolo);
 
+// clickable list items for the playlist to play the song clicked
   for(i=0; i<Jukebox.songs.length ; i++){
-    console.log(i);
    elSelectSong = document.getElementsByTagName('li')[i];
    elSelectSong.addEventListener("click", function(){
      currentSong = Jukebox.songs[this.getAttribute('id')];
@@ -159,4 +158,25 @@ document.addEventListener("DOMContentLoaded",function(){
      document.getElementById('play').style.display = "none";
    })
  };
+
+ //jQuery functions to hide and show playlist
+ $('#playlist').hide();
+ $('#hide').hide();
+ $('#list').hide();
+ $('#clickme').click(
+   function(){
+      $('#playlist').slideDown(1000);
+      $('#list').slideDown(3000);
+      $('#clickme').slideUp(500);
+      $('#hide').slideDown(500);
+   }
+ )
+ $('#hide').click(
+   function(){
+      $('#playlist').slideUp(3000);
+      $('#list').slideUp(1000);
+      $('#clickme').slideDown(500);
+      $('#hide').slideUp(500);
+   }
+ )
 });

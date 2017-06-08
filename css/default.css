@@ -14,11 +14,14 @@ h1 {
   width: 30%;
   margin: auto;
 	background-color: rgba(0,0,0,0.2);
-	height: 60vh;
 	border: 5px solid #000;
 }
 #pause {
 	display: none;
+	color: rgb(255,204,204);
+}
+#play {
+	color: rgb(204,255,229);
 }
 #volume {
   width: 40%;
@@ -29,7 +32,7 @@ h1 {
 	margin: 20px auto;
 	margin-bottom: 20px;
 	background-color: rgba(0,0,0,0.2);
-	height: 60%;
+	height: 300px;
 	overflow: scroll;
 	font-size: 20px;
 	border: 1px solid #000;
@@ -48,7 +51,8 @@ h1 {
 h3 {
 	text-align: center;
 	margin: auto;
-	font-size: 15px;
+	margin-top: 10px;
+	font-size: 25px;
 }
 ol {
 	margin-top: 0;
@@ -59,4 +63,24 @@ li {
 }
 i {
 	text-shadow: 2px 2px #000;
+}
+#clickme {
+	text-align: center;
+	margin: auto;
+	display: block;
+	font-size: 30px;
+	color: rgba(255,204,204,0.7)
+}
+li:hover {
+	color: rgba(204,255,229,0.8);
+}
+i:hover {
+	text-shadow: none;
+}
+#hide {
+	text-align: center;
+	margin: auto;
+	display: block;
+	font-size: 20px;
+	color: rgba(255,204,204,0.7)
 }
