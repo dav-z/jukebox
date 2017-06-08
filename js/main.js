@@ -60,7 +60,7 @@ Player.prototype.playPrevious = function(){
   if( this.currentSong >= 1 ){
     this.currentSong = (this.currentSong - 1) % this.songs.length;
   }
-  else if( this.currentSong === 0 ){
+  if( this.currentSong === 0 ){
     this.currentSong = this.songs.length - 1;
   }
   this.el.src = this.songs[this.currentSong].file;
